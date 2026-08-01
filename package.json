@@ -1,0 +1,34 @@
+{
+  "name": "company-background-agent-desktop",
+  "version": "1.0.0",
+  "description": "Company background research desktop app",
+  "main": "main.cjs",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win portable --publish never"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.liquorxty.companybackgroundagent",
+    "productName": "Company Background Agent",
+    "files": [
+      "index.html",
+      "main.cjs"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    }
+  }
+}
