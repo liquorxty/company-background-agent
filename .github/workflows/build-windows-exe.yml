@@ -10,7 +10,7 @@ on:
       - ".github/workflows/build-windows-exe.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -38,3 +38,15 @@ jobs:
           path: dist/*.exe
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          target_commitish: main
+          name: Company Background Agent v1.0.0
+          body: Windows portable desktop application.
+          files: dist/*.exe
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
